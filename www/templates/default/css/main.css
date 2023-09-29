@@ -1,0 +1,39 @@
+
+body {
+    margin: auto;
+    width: 1080px;
+    padding: 10px;
+    background-color: #fafafa;
+    font-size: 14px;
+    font-family: Verdana;
+    overflow-y: hidden;
+}
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+#content {
+    width: 800px;
+    padding-left: 20px;
+    min-height: 300px;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    background-color: #cff4fc;
+}
+
+.card{
+    display: inline-block;
+    margin: 6px;
+}
+.card img{
+    padding: 4px;
+}
+
+#content h5{
+    text-align: left;
+}
+.col-md-6 img{
+    margin-top: 40px;
+}
