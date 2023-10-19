@@ -12,6 +12,9 @@ function indexAction($smarty){
     //Получаем родительский айди продукта
     $recCategory = getCategoriesById($recProduct['category_id']);
 
+    $smarty->assign('itemInCart', 0);
+    if(in_array($itemId, $_SESSION['cart'])){$smarty->assign('itemInCart', 1);}
+
     $smarty->assign('pageTitle', $recProduct['name_ru']);
     $smarty->assign('allCategories', $allCategories);
     $smarty->assign('recCategory', $recCategory);

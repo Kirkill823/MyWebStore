@@ -8,8 +8,8 @@
 <div class = "wrapper">
     {include file = "../includes/sidebarMenu.tpl"}
     <div id = "content">
-        <h5>Товары категории {$recCategory['name_ru']}</h5>
-        {include file = '../includes/productCards.tpl'}
+        <h5>Корзина</h5>
+        {include file="../includes/cartBlock.tpl"}
     </div>
 </div
 {include file = "../includes/footer.tpl"}

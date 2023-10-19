@@ -4,7 +4,7 @@
         <div class="card-body">
             <h9 class="card-title"><b>{$prod['name_ru']}</b></h9>
             <p class="card-price">{$prod['price']}</p>
-            <a href="/?controller=product&id={$prod['id']}/" class="card-link">В корзину</a>
+            <a href="/?controller=product&id={$prod['id']}/" class="card-link">Перейти</a>
         </div>
     </div>
 {/foreach}

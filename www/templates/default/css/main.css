@@ -1,7 +1,7 @@
 
 body {
     margin: auto;
-    width: 1080px;
+    width: 1600px;
     padding: 10px;
     background-color: #fafafa;
     font-size: 14px;
@@ -36,4 +36,9 @@ body {
 }
 .col-md-6 img{
     margin-top: 40px;
+}
+
+.order{
+    float: right;
+    margin: auto;
 }

@@ -48,3 +48,19 @@ function getProductById($id){
     return mysqli_fetch_assoc($result);
 
 }
+
+
+function getProductsFromArray($itemIds){
+    $strIds = implode($itemIds, ', ');
+    $sql = 'SELECT * FROM products WHERE id in (' . $strIds . ')';
+
+    $link = createConnection();
+
+    $result = mysqli_query($link, $sql);
+
+    if ($result === false){
+        echo 'Ошибка номер' . mysqli_error($result);
+        echo $sql;
+    }
+    return createSmartyRecArr($result);
+}
