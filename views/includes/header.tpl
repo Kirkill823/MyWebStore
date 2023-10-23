@@ -23,7 +23,7 @@
                 </span>
             </a>
             <button type="button" class="btn btn-outline-primary me-2">Войти</button>
-            <button type="button" class="btn btn-primary">Регистрация</button>
+            <a class="btn btn-primary" href="/?controller=user">Регистрация</a>
         </div>
     </header>
 </div>

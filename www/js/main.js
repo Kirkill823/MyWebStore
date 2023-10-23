@@ -55,3 +55,27 @@ function removeFromCartTrash(itemId){
     });
 
 }
+function getData(obj_form){
+    let hData = {};
+    $('input', 'textarea', 'select', obj_form).each(function (){
+        if(this.name && this.name!=''){
+            hData[this.name] = this.value;
+            console.log('hData[' + this.name +']= = ' + hData[this.name]);
+        }
+    });
+    return hData;
+}
+
+function registerNewUser(){
+    let postData = getData('.reg');
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: '/?controller=users&action=register&email=' +postData['email'] + '&pass1=' + postData['pass1'] + '&pass2=' + postData['pass2'],
+        dataType: 'json',
+        success: function (data){
+            alert(data['message']);
+        }
+
+    });
+}

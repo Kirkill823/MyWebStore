@@ -1,6 +1,17 @@
 <?php
+//Контроллер функций пользователя
+
+include_once '../models/CategoriesModel.php';
+include_once '../models/UsersModel.php';
+
+function indexAction($smarty){
+    loadTemplate($smarty, 'registration');
+}
+
 /**
- * @return void
+ * AJAX Регистрация пользователя
+ * инициализация сессионной переменной ($_SESSIONХ['user'])
+ * @return json Массив данных нового пользователя
  */
 function registerAction(){
     $email = isset($_REQUEST['email']) ? $_REQUEST['email'] : null;
@@ -17,9 +28,29 @@ function registerAction(){
     $resData = null;
     $resData = checkRegisterParams($email, $pass1, $pass2);
 
-    if(!$resData && checkEmail($email)){
+    if(!$resData && checkUserEmail($email)){
         $resData['success'] = 0;
         $resData['message'] = "Пользователь с таким Email ('{$email}') уже зарегистрирован";
     }
 
+    if(!$resData){
+        $passHash = password_hash($pass1, PASSWORD_BCRYPT);
+
+        $userData = registerNewUser($email, $passHash, $name, $phone, $adress);
+        if($userData['success']){
+            $resData['message'] = 'Пользователь успешно зарегистрирован';
+            $resData['success'] = 1;
+
+            $userData=$userData[0];
+            $resData['userName'] = $userData['name']?: $userData['email'];
+            $resData['userEmail'] = $email;
+
+            $_SESSION['user'] = $userData;
+            $_SESSION['user']['displayName'] = $userData['name'] ?: $userData['email'];
+        } else{
+            $resData['success'] = 0;
+            $resData['message'] = 'Ошибка регистрации';
+        }
+    }
+    echo json_encode($resData);
 }
