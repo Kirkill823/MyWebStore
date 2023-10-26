@@ -7,13 +7,14 @@
  * @param $adress
  * @return array|bool|mysqli_result
  */
-function registerNewUser($email, $passHash, $name, $phone, $adress){
+function registerNewUser($email, $passHash, $name, $phone, $address){
     $email = htmlspecialchars($email);
     $name = htmlspecialchars($name);
     $phone = htmlspecialchars($phone);
-    $adress = htmlspecialchars($adress);
+    $address = htmlspecialchars($address);
 
-    $sql = "INSERT INTO users (email, pass, name, phone, adress) VALUES ({$email}','{$passHash}','{$name}','{$phone}','{$adress})";
+
+    $sql = "INSERT INTO users (email, pass, name, phone, address) VALUES ('{$email}','{$passHash}','{$name}','{$phone}','{$address}')";
     $link = createConnection();
     $result = mysqli_query($link, $sql);
 
@@ -22,10 +23,10 @@ function registerNewUser($email, $passHash, $name, $phone, $adress){
         $result = mysqli_query($link, $sql);
         $result = createSmartyRecArr($result);
 
-        if(isset($result[0])){$result['succcess']=1;}
-        else {$result['succcess']=0;}
+        if(isset($result[0])){$result['success']=1;}
+        else {$result['success']=0;}
     }
-     else {$result['succcess']=0;}
+     else {$result['success']=0;}
      return $result;
 }
 
@@ -61,7 +62,7 @@ function checkRegisterParams($email, $pass1, $pass2){
 
 function checkUserEmail($email){
     $email = htmlspecialchars($email);
-    $sql = "SELECT id  FROM users WHERE email = '" . $email . "'";
+    $sql = "SELECT id  FROM users WHERE email = '" . $email ."'";
     $link = createConnection();
     $result = mysqli_query($link, $sql);
 

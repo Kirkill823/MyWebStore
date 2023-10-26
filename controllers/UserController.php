@@ -17,14 +17,13 @@ function registerAction(){
     $email = isset($_REQUEST['email']) ? $_REQUEST['email'] : null;
     $email = trim($email);
 
-    $pass1 = isset($_REQUEST['pass1']) ? $_REQUEST['pwd1'] : null;
+    $pass1 = isset($_REQUEST['pass1']) ? $_REQUEST['pass1'] : null;
     $pass2 = isset($_REQUEST['pass2']) ? $_REQUEST['pass2'] : null;
 
     $phone = isset($_REQUEST['phone']) ? $_REQUEST['phone'] : null;
-    $adress = isset($_REQUEST['adress']) ? $_REQUEST['adress'] : null;
+    $address = isset($_REQUEST['address']) ? $_REQUEST['address'] : null;
     $name = isset($_REQUEST['name']) ? $_REQUEST['name'] : null;
     $name = trim($name);
-
     $resData = null;
     $resData = checkRegisterParams($email, $pass1, $pass2);
 
@@ -34,9 +33,9 @@ function registerAction(){
     }
 
     if(!$resData){
-        $passHash = password_hash($pass1, PASSWORD_BCRYPT);
+        $pwHash = password_hash($pass1, PASSWORD_BCRYPT);
 
-        $userData = registerNewUser($email, $passHash, $name, $phone, $adress);
+        $userData = registerNewUser($email, $pwHash, $name, $phone, $address);
         if($userData['success']){
             $resData['message'] = 'Пользователь успешно зарегистрирован';
             $resData['success'] = 1;
