@@ -36,7 +36,7 @@
                 {/foreach}
                 <ul class="nav nav-pills order">
                     <li class="nav-item">
-                        <button class="btn btn-primary btn-sm" type="submit">Оформить заказ</button>
+                        <button href="con" class="btn btn-primary btn-sm" type="submit">Оформить заказ</button>
                     </li>
                 </ul>
             </div>

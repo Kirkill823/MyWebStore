@@ -5,7 +5,7 @@
     <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=-OfxywCrrnChnLc5NKOehPd3JyWhX7wL1sPoWM_5INePA8KGw_yzPmkHuHS7zOzTfLaNamA7_4t5f_OLyGc4SmxasAADe6qjtic5G3IWimWoWBn5o1UGGgd1IXclZSN4mai5x0w160B_8os7H65POkTBI-yr3YrXkkv-CrRRqRVlz_ZH1WWIdNQTEI3FFkD9Eiq9TnkuXWoJ8q7tklsKeUUFm21HPuRNI4lbIAceUubMY-REH2LYRCWfQqGwDoSPKTYCgL2_OOxv69H2vfeTJZlSYlSvQGaRD5lEmNnYdou4gUHBD5IZS1SL5ywudBbARYDSKNfDMW2eSStu8zU0BdvzRwEtzkRc6AXqYPxpqV_FFv1w8-lsRGxZOb-7J8ZNRR-lOqwu3DwF283X6gM-zvXq3Th6H0vT5xklMUXtk-d5oipUf-zxbxB2ddDxUzezLAU8EsfpUI5a_bYosiuP3HoqP2Wa8BW_tZXAfpMmoT4ecZdzH8K77JAm4K5IYkLAs2vx5wJv30Crr3XZx9NjUW69Y5iEoH5HCxePDDBwE9eLauyAzMOU6k_1T-Z5o8EQknqFieDACAC92jz3HiUem0mm1Xvdc0Okb-6Ahrn_U1lqYa_RjvPt7iVRmq6bmUCiAVQIDOrSrIlAtaDf_PYhgCJAxrVQ3KVcBZWRoF14OepvClZUmP5Jrb-GHRp72WPtWFc_nIp_YUtigb3HFXoLvuHoAIM-uuOOt8G0c-jtQGZEs4riIzKjhQZVKkiOI05CWoF1Ym35InUak9KLUV_lgP5B7g7E1dJ6T6qq4M5mMWa-UjRgeRFgGfyBEx0hWgQh-RwePvjXh-bVJ8HGDQzJpMamA8H6CFRHsdujYwGMdJudLa9UA_xGz5D5d2xnm7S_-Ngb7K7aw54bYIWHRqUkYbOr2MjVYNnrPn4qEgDvCW3NnSdIjRi2YFDnWydQc2BYKhr4Ogvku6PHdobkeJlID3o9wwKf1gECbfOefBzT8XIiwwEgr37iCuNHOAwWS9tR1I6tT_olY_UO1CvAYUsK2G6Dm4roEgYZ_5h9U572vhFbIHzLwIYm963S2Jq6HxzA" charset="UTF-8"></script></head>
     <body>
     <div class = "wrapper">
-        <div class="reg">
+        <div class= "form" id="reg">
             <section class="vh-30">
                 <div class="container h-30">
                     <div class="row d-flex justify-content-center align-items-center h-30">

@@ -24,3 +24,8 @@ function createSmartyRecArr($record){
     while ($row = mysqli_fetch_array($record)){$smartyRec[] = $row;}
     return $smartyRec;
 }
+
+function redirect(string $url = '/'){
+    header("Location: {$url}");
+    exit;
+}

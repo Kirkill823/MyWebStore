@@ -13,6 +13,10 @@ include_once '../library/mainFunctions.php';
 $controllerName = isset($_GET['controller']) ? ucfirst($_GET['controller']):'index';
 $actionName = isset($_GET['action']) ? $_GET['action']:'index';
 
+if(isset($_SESSION['user'])){
+    $smarty->assign('arrUser', $_SESSION['user']);
+}
+
 $smarty->assign('cartCntItems', count($_SESSION['cart']));
 
 loadPage($smarty, $controllerName, $actionName);

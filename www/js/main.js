@@ -60,14 +60,14 @@ function getData(obj_form){
     $('input, textarea, select', obj_form).each(function (){
         if(this.name && this.name!=''){
             hData[this.name] = this.value;
-            console.log('hData[' + this.name +']= = ' + hData[this.name]);
+           // console.log('hData[' + this.name +']= = ' + hData[this.name]);
         }
     });
     return hData;
 }
 
 function registerNewUser(){
-    let postData = getData('.reg');
+    let postData = getData('#reg');
     $.ajax({
         type: 'POST',
         async: false,
@@ -75,7 +75,51 @@ function registerNewUser(){
         dataType: 'json',
         success: function (data){
             alert(data['message']);
+            if (data['success']){
+                window.location.href = '/' //ссылка, куда пользователь отправится после логина
+            }
         }
 
     });
+}
+
+function loginUser(){
+    let postData = getData('#auth');
+
+    $.ajax({
+        type:'POST',
+        async: false,
+        url: '/?controller=user&action=login&email=' + postData['emailLogin'] + '&pass=' +   postData['passLogin'],
+        dataType:'json',
+        success: function (data){
+
+            if(data['success']){
+                window.location.href = '/'; //Перевод пользователя на главную стр
+            } else {
+                alert(data['message']); //вывод сообщения об ошибки
+            }
+        }
+
+    })
+}
+
+function updateUserData(){
+    let postData= getData('#profile');
+    console.log(postData);
+
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: '/?controller=user&action=update&name=' + postData['newName'] + '&phone=' + postData['newPhone'] + '&address=' + postData['newAddress'] + '&pass1=' + postData['newPass1'] + '&pass2=' + postData['newPass2'] + '&curPass' + postData['curPass'],
+        dataType: 'json',
+        success: function (data){
+            if (data['success']){
+                alert(data['message']); //вывод сообщения
+            }else {
+                alert(data['message']) //вывод сообщения
+            }
+        }
+    })
+
+
 }

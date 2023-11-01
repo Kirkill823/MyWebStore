@@ -42,3 +42,8 @@ body {
     float: right;
     margin: auto;
 }
+.form{
+    margin: auto;
+    background-color: navajowhite;
+    width: 100%;
+}

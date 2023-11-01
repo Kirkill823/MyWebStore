@@ -60,3 +60,18 @@ function removefromcartAction(){
     } else {$resData['success'] = 0;}
 echo json_encode($resData);
 }
+
+function orderAction($smarty){
+    $itemsids = isset($_SESSION['cart']) ? $_SESSION['cart'] : null; //Получам массив товаров
+    if(!$itemsids) {
+        redirect('/?controller=cart&'); //Если нет, возвращает в корзину
+        return;
+    }
+    $itemscnt = array();
+    foreach ($itemsids as $item) {
+        //Формируем ключ для массива POST
+        $postVar = 'itemsCnt_' . $item;
+        $itemscnt[$item] = isset($_POST[$postVar]) ? $_POST[$postVar] : null;
+        echo $postVar . '' . $itemscnt[$item] . '<br>';
+    }
+}

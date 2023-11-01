@@ -68,3 +68,59 @@ function checkUserEmail($email){
 
     return createSmartyRecArr($result);
 }
+
+/**
+ * @param $email
+ * @param $pass
+ * @return array
+ */
+function loginUser($email, $pass) {
+    $email = htmlspecialchars($email);
+    $sql = "SELECT * FROM users WHERE email = '{$email}' LIMIT 1";
+    $link = createConnection();
+    $result = mysqli_query($link, $sql);
+
+    $result = createSmartyRecArr($result);
+    if((isset($result[0])) &&  (password_verify($pass, $result[0]['pass']))){
+        $result['success'] = 1;
+    } else {
+        $result['success'] = 0;
+    }
+    return $result;
+}
+
+/**
+ * Изменение данных пользователя
+ *
+ * @param $name
+ * @param $phone
+ * @param $address
+ * @param $pass1
+ * @param $pass2
+ * @return boolean TRUE в случае успеха
+ */
+function updateUserData($name, $phone, $address, $pass1, $pass2){
+//не передаем email, так как он находится в сессионной пременной
+    $email = htmlspecialchars($_SESSION['user']['email']);
+    $name = htmlspecialchars($name);
+    $phone = htmlspecialchars($phone);
+    $address = htmlspecialchars($address);
+    $pass1 = trim($pass1);
+    $pass2 = trim($pass2);
+
+    $newPass = null;
+    if($pass1 && ($pass1 === $pass2)){
+        $newPass = password_hash($pass1, PASSWORD_BCRYPT);
+    }
+
+    $sql = "UPDATE users SET ";
+    if($newPass){
+        $sql .="pass = '{$newPass}',";
+    }
+    $sql .= "name = '{$name}', email = '{$email}', phone = '{$phone}', address = '{$address}' ";
+    $sql .="WHERE email = '{$email}' LIMIT 1";
+    $link = createConnection();
+    $result = mysqli_query($link, $sql);
+
+    return $result;
+}
