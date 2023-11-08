@@ -28,7 +28,9 @@ function makeNewOrder($name, $phone, $address){
         $result = mysqli_query($link, $sql);
         $result = createSmartyRecArr($result);
 
-        if(isset($result[0])){return $result[0]['id'];}
+        if(isset($result[0])){
+            return $result[0]['id'];
+        }
     }
     return false;
 }

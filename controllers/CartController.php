@@ -86,13 +86,10 @@ function orderAction($smarty){
         $postVar = 'itemCnt_' . $item;
         //$itemsCnt[3] = 2; товар с ID = 3 лежит в количистве 2 шт.
         $itemsCnt[$item] = isset($_POST[$postVar]) ? $_POST[$postVar] : null;
-        //отладка. удалить
-        echo $postVar . ' ' . $itemsCnt[$item] . '<br>';
     }
 
     //Список продуктов из массива крзины
     $recProducts = getProductsFromArray($itemsIds);
-    echo $recProducts['name_ru'];//Удалить
 
 
     /**
@@ -103,11 +100,10 @@ function orderAction($smarty){
 
     $i = 0;
     foreach ($recProducts as &$item) {
-        echo 'itemsCnt[item[id]] = ' . $itemsCnt[$item['id']] . "<br>"; //Удалить
+
         $item['cnt'] = isset($itemsCnt[$item['id']]) ? $itemsCnt[$item['id']] : 0;
         if ($item['cnt']) {
             $item['realPrice'] = $item['cnt'] * $item['price'];
-            echo "item[realPrice] = " . $item['cnt'] . '*' . $item['price'] . '=' . $item['realPrice'] . '<br>';
         } else {
             //Если вдруг в корзине есть товар с количеством 0 - удалить
             unset($recProducts[$i]);
@@ -131,8 +127,9 @@ function orderAction($smarty){
 }
 
 /**
- * @return void
- *
+ * Активация в JS
+ * @param  array $_SESSION['orderFromCart']
+ * @return json Инфа о выполнении операции
  */
 function saveorderAction(){
     $cart = isset($_SESSION['orderFromCart']) ? $_SESSION['orderFromCart'] : null;
